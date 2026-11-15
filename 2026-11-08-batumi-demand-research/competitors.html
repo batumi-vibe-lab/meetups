@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Батуми: конкуренты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f4f4f1; --card:#ffffff; --card-alt:#eef3fb; --ink:#0b0b0b; --ink-2:#52514e; --grid:#e6e5e0;
+  --s1:#2a78d6; --s1l:#9ec5f4; --s2:#eb6834; --muted:#b9b8b2;
+  --full:#2a78d6; --part:#cde2fb; --none:#f4f4f1; --unk:#ecebe6;
+  --good:#0f7b3f; --good-bg:#e3f4ea; --warn:#8a5a00; --warn-bg:#fdf1d6; --bad:#a3271f; --bad-bg:#fbe4e2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121211; --card:#1a1a19; --card-alt:#1d2533; --ink:#f0efec; --ink-2:#c3c2b7; --grid:#2c2c2a;
+    --s1:#3987e5; --s1l:#1c5cab; --s2:#d95926; --muted:#5d5c58;
+    --full:#3987e5; --part:#184f95; --none:#232322; --unk:#2a2a28;
+    --good:#7fd6a2; --good-bg:#183324; --warn:#f0c46a; --warn-bg:#3a2f14; --bad:#f19a92; --bad-bg:#3d1c19;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121211; --card:#1a1a19; --card-alt:#1d2533; --ink:#f0efec; --ink-2:#c3c2b7; --grid:#2c2c2a;
+  --s1:#3987e5; --s1l:#1c5cab; --s2:#d95926; --muted:#5d5c58;
+  --full:#3987e5; --part:#184f95; --none:#232322; --unk:#2a2a28;
+  --good:#7fd6a2; --good-bg:#183324; --warn:#f0c46a; --warn-bg:#3a2f14; --bad:#f19a92; --bad-bg:#3d1c19;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 16px 80px}
+h1{font-size:34px;line-height:1.15;margin:0 0 12px;font-weight:700}
+h2{font-size:26px;margin:0 0 6px;font-weight:700}
+h3{font-size:18px;margin:0 0 4px;font-weight:600}
+p{margin:0 0 10px}
+.lead{font-size:17px;color:var(--ink-2);max-width:860px}
+.card{background:var(--card);border-radius:16px;padding:24px;margin:0 0 20px}
+.section{margin:52px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.chart-title{font-weight:600;margin:0 0 2px}
+.chart-sub{color:var(--ink-2);font-size:14px;margin:0 0 14px}
+.box{position:relative;height:320px}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:600;color:var(--ink-2);padding:8px 10px;background:var(--bg);vertical-align:bottom}
+td{padding:10px;vertical-align:top;border-top:1px solid var(--grid)}
+.mx th.c{text-align:center;min-width:92px;font-size:13px}
+.mx td.c{text-align:center;font-size:18px;font-weight:700;padding:0;border:2px solid var(--card)}
+.mx td.c span{display:block;padding:9px 0;border-radius:6px}
+.v-full span{background:var(--full);color:#fff}.v-part span{background:var(--part);color:var(--ink)}.v-none span{background:var(--none);color:var(--ink-2)}.v-unk span{background:var(--unk);color:var(--ink-2)}
+.mx td.n{font-weight:600;white-space:nowrap}
+.mx tr.gaprow td{border-top:2px solid var(--grid)}
+.gapcell span{background:var(--good-bg)!important;color:var(--good)!important;font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--ink-2);margin:0 0 14px}
+.legend i{display:inline-block;width:22px;height:18px;border-radius:4px;margin-right:6px;vertical-align:-4px;text-align:center;font-style:normal;font-weight:700;font-size:12px;line-height:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.sol{background:var(--card);border-radius:16px;padding:20px}
+.sol h3{margin:0 0 6px}
+.sol .proof{display:inline-block;background:var(--card-alt);border-radius:8px;padding:6px 10px;font-size:14px;font-weight:600;margin:8px 0}
+.sol .src{font-size:13px;color:var(--ink-2)}
+a{color:var(--s1)}
+.st{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap;background:var(--card-alt);color:var(--ink-2)}
+.st.V{background:var(--good-bg);color:var(--good)}.st.S{background:var(--warn-bg);color:var(--warn)}
+.p-hi{background:var(--bad-bg);color:var(--bad)}.p-mid{background:var(--warn-bg);color:var(--warn)}.p-lo{background:var(--good-bg);color:var(--good)}
+.fc td{vertical-align:top}
+.concl{background:var(--card-alt);border-radius:16px;padding:22px 24px;margin:0 0 20px}
+.concl ol{margin:8px 0 0;padding-left:22px}.concl li{margin:0 0 8px}
+.final{background:#14324f;color:#fff;border-radius:16px;padding:28px}
+.final h2{color:#fff}.final ol{padding-left:22px;margin:12px 0 0}.final li{margin:0 0 10px}
+.howto{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.howto{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Батуми: конкуренты по трём бизнес-идеям</h1>
+<p class="lead">Кто уже даёт решения, которые мы вывели из ресёрча, насколько сильно, и где остаётся свободное место. Конкурентов искали 7–8 ноября 2026 на грузинском, русском и английском языках. Выводы по каждой идее стоят под её матрицей, общий итог в конце.</p>
+
+<div class="howto section">
+  <div class="card">
+    <h3>Как читать матрицу</h3>
+    <div class="legend" style="margin-top:10px">
+      <span><i style="background:var(--full);color:#fff">●</i>решение есть</span>
+      <span><i style="background:var(--part)">◐</i>частично</span>
+      <span><i style="background:var(--none);color:var(--ink-2)">○</i>нет</span>
+      <span><i style="background:var(--unk);color:var(--ink-2)">?</i>не проверено</span>
+    </div>
+    <p>Колонки — решения нашей идеи. Строки — конкуренты, один игрок на строку. Нижняя строка показывает, у скольких конкурентов решение есть полностью. Зелёная ячейка «свободно» значит, что полностью его нет ни у кого.</p>
+  </div>
+  <div class="card">
+    <h3>Насколько верить данным</h3>
+    <p><span class="st V">сверено</span> — цифру я открыла на странице конкурента 08.11.</p>
+    <p><span class="st">страница</span> — страницу открыл поиск, цифры из его отчёта, все ссылки рабочие.</p>
+    <p><span class="st S">сниппет</span> — только по выдаче поисковика, нужна ручная проверка.</p>
+  </div>
+</div>
+
+<div id="ideas"></div>
+
+<div class="section">
+  <h2>Сравнение трёх идей</h2>
+  <p class="lead">Сколько решений каждой идеи рынок ещё не закрыл полностью ни у одного конкурента.</p>
+  <div class="grid2" style="margin-top:18px">
+    <div class="card"><p class="chart-title">Свободные решения</p><p class="chart-sub">Из 7 решений идеи, полностью нет ни у одного конкурента</p><div class="box" style="height:220px"><canvas id="sumFree"></canvas></div></div>
+    <div class="card"><p class="chart-title">Сильнейший конкурент: сколько наших решений он уже закрывает</p><p class="chart-sub">● = 1, ◐ = 0,5, максимум 7</p><div class="box" style="height:220px"><canvas id="sumTop"></canvas></div></div>
+  </div>
+</div>
+
+<div class="section final">
+  <h2>Итог третьего этапа</h2>
+  <ol>
+    <li><b>Легализация (идея 3)</b> — рынок оформления закрыт дёшево, но сопровождения после оформления нет ни у кого: напоминаний о 365 днях, продлении ВНЖ, декларациях и полисе. Это самое чистое свободное место, и под него есть растущий спрос из этапа 2.</li>
+    <li><b>Карта районов (идея 2)</b> — каталоги ЖК и карты уже есть, а отзывов жильцов нет ни у кого. Ценность есть только в отзывах, и это же главная трудность: их надо собрать с нуля. Главная угроза — Korter.</li>
+    <li><b>Мастера (идея 1)</b> — сервисы работают на Тбилиси, в Батуми почти пусто, рекомендации соседей живут только в группах. Спрос в поиске умеренный: в Яндексе маленький, в Google по 100–1 000 запросов в месяц на ключ в самом Батуми. Сильнейший игрок Profy может прийти в Батуми.</li>
+    <li><b>Что взять у конкурентов:</b> у Profy — фиксированную цену и гарантию, у Korter — готовую базу ЖК как основу для отзывов (партнёрство или открытые данные), у OpenBiz и PB Services — офисы в Батуми как партнёров для сопровождения.</li>
+    <li><b>Прогноз.</b> Главные угрозы на год: сообщества сами монетизируют рекомендации мастеров (вероятность высокая), Korter добавит отзывы о ЖК (средняя), юрфирмы с офисами в Батуми добавят напоминания о сроках (средняя). По всем трём лучший ответ — партнёрство и скорость, а не прямая конкуренция.</li>
+    <li><b>Ограничения.</b> Telegram-каналы и боты внутри Telegram не искали. Отзывы о ЖК в Google Maps и 2GIS не проверены. Позиции в выдаче взяты из поиска без привязки к Грузии.</li>
+  </ol>
+</div>
+</div>
+<script>
+const D={"ideas": [{"n": 1, "title": "Проверенные мастера и специалисты", "cols": ["Батуми в фокусе", "Рекомендации и отзывы", "Проверка мастера", "Цена заранее", "Три языка ka/ru/en", "Мастера и врачи вместе", "Оплата и гарантия внутри"], "rows": [{"name": "FB-группы и TG-чаты Батуми", "url": "", "type": "сообщества", "geo": "Батуми", "lang": "ka или ru", "model": "бесплатно, боты чатов ведут к платным «экспертам»", "power": "ItsBatumi 139,9 тыс. участников; ~половина постов «посоветуйте мастера»", "ver": "ресёрч", "m": ["●", "●", "○", "○", "◐", "●", "○"], "score": 3.5}, {"name": "Profy", "url": "https://profy.ge", "type": "приложение заказа услуг", "geo": "Грузия, Батуми не подтверждён", "lang": "ka/en/ru", "model": "комиссия с заказа (трактовка)", "power": "100 000+ заказов, 500+ специалистов, рейтинг 4,9/5", "ver": "V", "m": ["○", "●", "◐", "●", "●", "○", "●"], "score": 4.5}, {"name": "fix.ge", "url": "https://fix.ge/ru", "type": "доска мастеров", "geo": "вся Грузия, из Батуми единицы", "lang": "ka/ru/en", "model": "платный VIP-статус", "power": "737 активных объявлений", "ver": "V", "m": ["○", "◐", "○", "◐", "●", "○", "○"], "score": 2.0}, {"name": "services.ss.ge", "url": "https://services.ss.ge/ka", "type": "доска услуг", "geo": "вся Грузия, из Батуми единицы", "lang": "ka/en", "model": "Super VIP, реклама", "power": "раздел крупнейшей доски SS.ge", "ver": "A", "m": ["○", "○", "◐", "◐", "◐", "○", "○"], "score": 1.5}, {"name": "servisebi.ge", "url": "https://servisebi.ge", "type": "каталог услуг", "geo": "вся Грузия, в выдаче Тбилиси", "lang": "ka", "model": "премиум-статус", "power": "оценки у мастеров по 1–3, метки «верифицирован»", "ver": "V", "m": ["○", "◐", "◐", "○", "○", "◐", "○"], "score": 1.5}, {"name": "ydoc.ge", "url": "https://ydoc.ge/batumi", "type": "агрегатор врачей", "geo": "вся Грузия, раздел Батуми", "lang": "ru", "model": "команда ПроДокторов", "power": "Батуми: 881 врач, 118 клиник, но 45 отзывов", "ver": "V", "m": ["●", "◐", "○", "◐", "○", "○", "○"], "score": 2.0}, {"name": "madloba.info", "url": "https://madloba.info/en/reviews/medical-services/dentistry/chastnye-stomatologii-v-batumi", "type": "каталог и FAQ", "geo": "Тбилиси и Батуми", "lang": "ru/ka/en", "model": "реклама, платное продвижение", "power": "8 стоматологий Батуми с оценками; мастеров Батуми нет", "ver": "A", "m": ["◐", "◐", "○", "○", "●", "◐", "○"], "score": 2.5}, {"name": "2GIS Батуми", "url": "https://2gis.ge/batumi", "type": "карта-справочник", "geo": "Батуми", "lang": "ka/en", "model": "реклама", "power": "число отзывов не проверено", "ver": "A", "m": ["●", "?", "○", "○", "◐", "◐", "○"], "score": 2.0}], "strong": [{"who": "Profy", "what": "Фиксированная цена, оплата внутри приложения и выбор исполнителя по отзывам. Это снимает главный страх из ресёрча: «мастер не придёт или возьмёт предоплату и пропадёт».", "proof": "100 000+ заказов, 500+ специалистов, рейтинг 4,9/5", "url": "https://profy.ge", "ver": "V"}, {"who": "ydoc.ge", "what": "Полная база врачей именно по Батуми с разбивкой по специальностям. Каталог уже собран, не хватает только отзывов.", "proof": "881 врач, 118 клиник, 45 отзывов", "url": "https://ydoc.ge/batumi", "ver": "V"}, {"who": "fix.ge", "what": "Три языка интерфейса и модель «мастер платит за VIP-показ». Простая монетизация без комиссии с заказа.", "proof": "737 активных объявлений", "url": "https://fix.ge/ru", "ver": "V"}, {"who": "FB-группы и TG-чаты", "what": "Живые рекомендации соседей с именами и телефонами. Это то доверие, которого нет ни у одного сервиса, но оно тонет в ленте за сутки.", "proof": "~половина постов ItsBatumi — «посоветуйте мастера»", "url": "", "ver": "ресёрч"}], "conclusion": ["Сервисы мастеров в Грузии работают на Тбилиси. В Батуми из них приходят единичные объявления, а отзывов везде по 1–3.", "Полностью свободна только проверка мастера: у сервисов есть лишь метки «verified» без описания проверки. Рекомендации соседей есть только в группах и чатах, ни один сервис их не собирает и не сохраняет.", "Сильнейший игрок — Profy: фиксированная цена и оплата внутри. Если он придёт в Батуми, он закроет большую часть наших решений. Стоит позаимствовать у него механику гарантии.", "По врачам каталог Батуми уже собран у ydoc.ge, а отзывов почти нет. Делать свой каталог врачей смысла нет, ценность только в отзывах."], "forecast": [{"who": "FB-группы и чат-боты", "move": "Сами монетизируют рекомендации: платные «эксперты», закреп мастеров за деньги", "p": "высокая", "why": "Бот чата TravelAsk уже ведёт людей к платным «экспертам» (ресёрч)", "signal": "Платные посты мастеров и боты в группах ItsBatumi и чатах", "answer": "Договариваться с админами о доле дохода, а не конкурировать с ними"}, {"who": "Profy", "move": "Откроет Батуми", "p": "средняя", "why": "100 000+ заказов, приложение уже на трёх языках, но Батуми за всё время не подтверждён", "signal": "Батуми в выборе города в приложении, вакансии мастеров в Батуми", "answer": "Успеть собрать базу рекомендованных мастеров; предложить Profy себя как поставщика мастеров в Батуми"}, {"who": "ydoc.ge", "move": "Наберёт отзывы о врачах Батуми", "p": "низкая", "why": "За годы работы 45 отзывов на 881 врача", "signal": "Рост числа отзывов на ydoc.ge/batumi", "answer": "Не строить свой каталог врачей; собирать отзывы на русском"}, {"who": "fix.ge, services.ss.ge", "move": "Останутся досками объявлений без проверки мастеров", "p": "высокая", "why": "Модель держится на платных VIP-статусах, проверка её не усиливает", "signal": "Появление проверки или гарантий", "answer": "Проверка и гарантия — наше отличие, вести с ними рекламу"}], "gap": [{"col": "Батуми в фокусе", "full": 3, "part": 1}, {"col": "Рекомендации и отзывы", "full": 2, "part": 4}, {"col": "Проверка мастера", "full": 0, "part": 3}, {"col": "Цена заранее", "full": 1, "part": 3}, {"col": "Три языка ka/ru/en", "full": 3, "part": 3}, {"col": "Мастера и врачи вместе", "full": 1, "part": 3}, {"col": "Оплата и гарантия внутри", "full": 1, "part": 0}]}, {"n": 2, "title": "Карта домов и районов с отзывами", "cols": ["Каталог ЖК Батуми", "Карта", "Отзывы жильцов", "Гид по районам", "Цены", "Три языка ka/ru/en", "Независимость от продаж"], "rows": [{"name": "Korter.ge", "url": "https://korter.ge/en/new-projects-in-batumi", "type": "портал новостроек", "geo": "Грузия, раздел Батуми", "lang": "ka/ru/en", "model": "лиды и консультации покупателям", "power": "274 ЖК, 216 застройщиков", "ver": "V", "m": ["●", "?", "○", "◐", "●", "●", "○"], "score": 3.5}, {"name": "SS.ge", "url": "https://home.ss.ge", "type": "доска объявлений", "geo": "вся Грузия", "lang": "ka/ru/en", "model": "платные статусы объявлений", "power": "11 891 объявление о продаже квартир в Батуми", "ver": "V", "m": ["○", "○", "○", "◐", "●", "●", "◐"], "score": 3.0}, {"name": "Geoln.com", "url": "https://geoln.com/ru/developers/alliance-group", "type": "портал новостроек", "geo": "несколько стран", "lang": "11 языков", "model": "лиды застройщикам", "power": "3 отзыва о застройщике Alliance, не о домах", "ver": "A", "m": ["◐", "?", "◐", "○", "●", "●", "○"], "score": 3.0}, {"name": "HomesOverseas.ru", "url": "https://www.homesoverseas.ru/eng/country/Gruzija/region/Batumi/complexes", "type": "агрегатор зарубежной недвижимости", "geo": "Батуми", "lang": "ru/en", "model": "платное размещение, реклама", "power": "23 ЖК, карта, отчёт по рынку Батуми за I кв. 2026", "ver": "A", "m": ["◐", "●", "○", "○", "●", "◐", "○"], "score": 3.0}, {"name": "Prian.ru", "url": "https://prian.ru/map/georgia/adjara/batumi/", "type": "агрегатор с картой", "geo": "Батуми", "lang": "ru", "model": "платное размещение", "power": "поиск по карте с выделением области", "ver": "A", "m": ["◐", "●", "○", "○", "●", "○", "○"], "score": 2.5}, {"name": "Sea Inside", "url": "https://sea-inside.net/en/best-areas-in-batumi-for-buying-an-apartment", "type": "агентство, гид по районам", "geo": "Батуми", "lang": "en/ru", "model": "комиссия агентства", "power": "высоко в выдаче «best areas to live in batumi»", "ver": "A", "m": ["○", "○", "○", "●", "◐", "◐", "○"], "score": 2.0}, {"name": "ExpatHub", "url": "https://expathub.ge/living-in-batumi/", "type": "сервис для экспатов", "geo": "Батуми", "lang": "en", "model": "платные услуги", "power": "называет дома, где живут экспаты (Porta, Alliance Privilege)", "ver": "A", "m": ["○", "○", "○", "●", "○", "○", "○"], "score": 1}, {"name": "madloba.info", "url": "https://madloba.info/faq/housing/where-to-stay-in-batumi/", "type": "FAQ-каталог", "geo": "Батуми", "lang": "ru/en/ka", "model": "реклама", "power": "в выдаче по «где жить в батуми»", "ver": "A", "m": ["○", "○", "○", "◐", "○", "●", "◐"], "score": 2.0}, {"name": "Booking, Airbnb (отзывы гостей)", "url": "https://www.thebudgetsavvytravelers.com/orbi-city-batumi-6-things-to-know-before-booking", "type": "бронирование", "geo": "Батуми", "lang": "все", "model": "комиссия с брони", "power": "у Orbi City десятки отзывов, но это гости на 2–7 ночей", "ver": "S", "m": ["○", "●", "◐", "○", "●", "●", "◐"], "score": 4.0}], "strong": [{"who": "Korter.ge", "what": "Готовая база всех ЖК Батуми с ценами, сроками сдачи и застройщиками на трёх языках. Сам Korter пишет, что отзывы покупателей важны для выбора, но их не собирает.", "proof": "274 ЖК, 216 застройщиков", "url": "https://korter.ge/en/new-projects-in-batumi", "ver": "V"}, {"who": "HomesOverseas.ru", "what": "Карта ЖК и квартальный отчёт по рынку Батуми. Отчёт — сильный повод для возврата и для медиа.", "proof": "I кв. 2026: 4 049 сделок, +15,8%, $1 893 за м²", "url": "https://www.homesoverseas.ru/eng/country/Gruzija/region/Batumi/complexes", "ver": "S"}, {"who": "ExpatHub, Sea Inside", "what": "Гиды по районам с конкретными домами, где живут экспаты. Такой текст стоит в топе англоязычной выдачи.", "proof": "топ по «best areas to live in batumi»", "url": "https://expathub.ge/living-in-batumi/", "ver": "A"}], "conclusion": ["Отзывов жильцов о конкретных ЖК Батуми нет ни у одного проверенного игрока. Ближе всех geoln.com: 3 отзыва о застройщике, а не о домах.", "Каталог ЖК и карта уже есть у Korter, HomesOverseas и Prian. Строить их заново невыгодно: ценность продукта только в отзывах жильцов и честном гиде по районам.", "Главный риск — Korter. У него база на 274 ЖК и три языка, блок отзывов он может добавить быстрее, чем новый игрок соберёт каталог.", "Главная трудность — первые отзывы. Их нет ни у кого, скорее всего, потому что их сложно собрать. Источник для старта — чаты экспатов, где уже обсуждают конкретные ЖК.", "Не проверены отзывы о ЖК в Google Maps и 2GIS. Если там у крупных ЖК десятки отзывов жильцов, свободного места меньше."], "forecast": [{"who": "Korter.ge", "move": "Добавит отзывы жильцов в карточки ЖК", "p": "средняя", "why": "База 274 ЖК на трёх языках; на сайте сам пишет, что отзывы покупателей важны для выбора", "signal": "Блок отзывов в карточке ЖК на korter.ge", "answer": "Позиционироваться как независимые: Korter живёт на лидах застройщиков, поэтому честные отзывы ему невыгодны"}, {"who": "Застройщики и агентства", "move": "Начнут накручивать отзывы, как только площадка станет заметной", "p": "высокая", "why": "Клик по «купить квартиру в батуми» стоит до $4,8, ставки высокие", "signal": "Всплески 5-звёздочных отзывов у одного ЖК", "answer": "С первого дня проверять жильца: договор аренды, квитанция, фото из квартиры"}, {"who": "Агентства с гидами (Sea Inside, ExpatHub)", "move": "Нарастят статьи о районах и домах", "p": "высокая", "why": "Такой контент дешёвый и уже стоит в топе англоязычной выдачи", "signal": "Новые статьи по названиям ЖК в выдаче", "answer": "Не соревноваться статьями; держать страницы ЖК с отзывами, их у агентств нет"}, {"who": "Google Maps", "move": "Отзывы о ЖК будут копиться сами", "p": "высокая", "why": "Карточки домов в картах открыты для отзывов", "signal": "Число отзывов у 10 крупных ЖК в Google Maps", "answer": "Проверить сейчас вручную; если отзывов много, показывать их рядом со своими"}], "gap": [{"col": "Каталог ЖК Батуми", "full": 1, "part": 3}, {"col": "Карта", "full": 3, "part": 0}, {"col": "Отзывы жильцов", "full": 0, "part": 2}, {"col": "Гид по районам", "full": 2, "part": 3}, {"col": "Цены", "full": 6, "part": 1}, {"col": "Три языка ka/ru/en", "full": 5, "part": 2}, {"col": "Независимость от продаж", "full": 0, "part": 3}]}, {"n": 3, "title": "Помощник по легализации: ВНЖ, ИП, страховка", "cols": ["Оформление ВНЖ и ИП", "Цены открыты", "Офис в Батуми", "Русский язык", "Напоминания о сроках", "Страховка в связке", "Бесплатный пошаговый гид"], "rows": [{"name": "OpenBiz.ge", "url": "https://openbiz.ge", "type": "релокационный сервис", "geo": "Батуми и Тбилиси", "lang": "ru", "model": "разовые услуги, допродажа деклараций", "power": "ИП от 295 GEL, ВНЖ от 345 GEL, удалённо от 1 335 GEL", "ver": "V", "m": ["●", "●", "●", "●", "○", "○", "○"], "score": 4}, {"name": "PB Services", "url": "https://pbservices.ge/ru/rezidentstvo-gruzii", "type": "юрфирма и бухгалтерия", "geo": "Тбилиси и Батуми", "lang": "ru/en", "model": "услуги и налоговая релокация", "power": "Google 4,9, 400+ оценок, офис Батуми: Akhmeteli 7a", "ver": "V", "m": ["●", "○", "●", "●", "○", "○", "◐"], "score": 3.5}, {"name": "ExpatHub", "url": "https://expathub.ge/individual-entrepreneur-georgia-business-registration/", "type": "релокация и юрфирма", "geo": "подача в Тбилиси или Батуми", "lang": "en", "model": "услуги, годовой юрадрес", "power": "ИП от 600 GEL (~$220), лидер англоязычной выдачи", "ver": "V", "m": ["●", "●", "◐", "○", "○", "○", "●"], "score": 3.5}, {"name": "Espero LLC", "url": "https://madloba.info/en/batumi/konsaltingovyye-agentstva/espero-llc/", "type": "консалтинг по ИП", "geo": "Батуми", "lang": "ru/en/ka", "model": "услуги", "power": "4,1 по 11 отзывам", "ver": "A", "m": ["◐", "○", "●", "●", "○", "○", "○"], "score": 2.5}, {"name": "Gegidze Group", "url": "https://www.gegidze.com/post/individual-entrepreneur-in-georgia-country-2026-registration-1-tax-small-business-status", "type": "юрфирма и бухгалтерия", "geo": "Тбилиси", "lang": "en/ru/de", "model": "услуги, контент-маркетинг", "power": "много SEO-статей 2026, с 2017 года", "ver": "A", "m": ["●", "◐", "○", "●", "○", "○", "●"], "score": 3.5}, {"name": "International Expert", "url": "https://international.expert/vnzh-gruzii.html", "type": "миграционная юрфирма", "geo": "онлайн, офиса в Грузии нет", "lang": "ru", "model": "сопровождение", "power": "высоко в русской выдаче по ВНЖ 2026", "ver": "A", "m": ["●", "◐", "○", "●", "○", "○", "●"], "score": 3.5}, {"name": "Т—Ж", "url": "https://t-j.ru/vnzh-v-gruzii/", "type": "медиа-гид", "geo": "онлайн", "lang": "ru", "model": "медиа", "power": "~619 тыс. просмотров; советует подавать без посредников", "ver": "A", "m": ["○", "◐", "○", "●", "○", "◐", "●"], "score": 3.0}, {"name": "madloba.info", "url": "https://madloba.info/faq/visa-and-border/travel-insurance-for-georgia/", "type": "каталог и FAQ", "geo": "вся Грузия, раздел Батуми", "lang": "ru/en/ka", "model": "платное продвижение", "power": "каталог юрфирм Батуми, FAQ по страховке", "ver": "A", "m": ["○", "○", "◐", "●", "○", "◐", "●"], "score": 3.0}, {"name": "SDA и Дом юстиции (госсервис)", "url": "https://sda.gov.ge/en/products/migration-residence-permits/", "type": "госсервис", "geo": "вся Грузия, онлайн-подача", "lang": "en/ka", "model": "госпошлины", "power": "ВНЖ 300/450/600 GEL по сроку рассмотрения", "ver": "A", "m": ["●", "●", "●", "○", "○", "○", "◐"], "score": 3.5}], "strong": [{"who": "OpenBiz.ge", "what": "Открытые низкие цены и офис в Батуми, удалённое оформление без предоплат. На разовом оформлении конкурировать ценой почти некуда.", "proof": "ИП от 295 GEL, ВНЖ от 345 GEL", "url": "https://openbiz.ge", "ver": "V"}, {"who": "PB Services", "what": "Доверие через отзывы и скорость ответа. Офисы в Батуми и Тбилиси, есть Telegram-канал.", "proof": "Google 4,9, 400+ оценок", "url": "https://pbservices.ge/ru/rezidentstvo-gruzii", "ver": "V"}, {"who": "ExpatHub", "what": "Прозрачный прайс и сеть гидов, которые держат топ англоязычной выдачи.", "proof": "ИП от 600 GEL, удалённо +600 GEL, юрадрес 390 GEL в год", "url": "https://expathub.ge/pricing/", "ver": "V"}, {"who": "Т—Ж", "what": "Бесплатный подробный гид, который учит подавать самому. Это задаёт ожидание: базовую информацию люди получают бесплатно.", "proof": "~619 тыс. просмотров", "url": "https://t-j.ru/vnzh-v-gruzii/", "ver": "A"}], "conclusion": ["Само оформление ВНЖ и ИП рынок уже закрывает дёшево и с офисами в Батуми: OpenBiz, PB Services, Espero. Входить сюда с разовой услугой бессмысленно.", "Напоминаний о сроках нет ни у кого: правило 365 дней, продление ВНЖ за 90–40 дней, ежемесячная декларация ИП, продление полиса. Это единственная колонка, где пусто у всех.", "Связки «ВНЖ, ИП и страховка в одном месте» тоже нет. Госсервис SDA не работает на русском.", "Модель, которая следует из пробела, — подписка на сопровождение. Ориентир цены — рынок бухгалтерии ИП, 100–250 GEL в месяц (по данным Gegidze).", "Риск: OpenBiz и PB Services могут добавить напоминания к своим услугам. Защита — скорость и партнёрство с ними, а не конкуренция."], "forecast": [{"who": "Рекламодатели по ВНЖ", "move": "Придут в рекламу, клик подорожает", "p": "средняя", "why": "Спрос на ВНЖ вырос почти вдвое за год, а клик пока дешёвый ($0,25–0,70)", "signal": "Рост ставки в Keyword Planner по «внж грузии»", "answer": "Зайти в рекламу раньше и собрать базу подписчиков, пока клик дешёвый"}, {"who": "OpenBiz.ge, PB Services", "move": "Добавят напоминания о сроках для своих клиентов", "p": "средняя", "why": "Уже продают декларации и юрадрес, напоминания — дешёвый способ удержания", "signal": "Бот или рассылка с напоминаниями в их Telegram-каналах", "answer": "Предложить партнёрство: наше сопровождение для их клиентов, их оформление для наших"}, {"who": "Государство", "move": "Изменит правила (как закон о страховке с 01.01.2026)", "p": "высокая", "why": "В 2026 уже был такой всплеск: запросы о медстраховке выросли почти в 9 раз", "signal": "Новости о ВНЖ, налогах и страховке для иностранцев", "answer": "Быстро обновлять чек-листы; каждое изменение — повод для рекламы и постов"}, {"who": "SDA и Дом юстиции", "move": "Добавят русский язык или напоминания", "p": "низкая", "why": "Сайт есть только на английском и грузинском", "signal": "Русская версия sda.gov.ge", "answer": "Отслеживать; при появлении — опираться на госсервис, а не спорить с ним"}], "gap": [{"col": "Оформление ВНЖ и ИП", "full": 6, "part": 1}, {"col": "Цены открыты", "full": 3, "part": 3}, {"col": "Офис в Батуми", "full": 4, "part": 2}, {"col": "Русский язык", "full": 7, "part": 0}, {"col": "Напоминания о сроках", "full": 0, "part": 0}, {"col": "Страховка в связке", "full": 0, "part": 2}, {"col": "Бесплатный пошаговый гид", "full": 5, "part": 2}]}], "ver": {"V": "сверено на странице 08.11", "A": "страница открыта, цифры из отчёта поиска", "S": "только сниппет выдачи", "ресёрч": "из ресёрча чатов и групп"}};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+Chart.defaults.font.family='Inter, system-ui, sans-serif'; Chart.defaults.font.size=13;
+const cls=v=>v==='●'?'v-full':v==='◐'?'v-part':v==='?'?'v-unk':'v-none';
+const verTag=v=>v==='V'?'<span class="st V">сверено</span>':v==='S'?'<span class="st S">сниппет</span>':v==='A'?'<span class="st">страница</span>':'<span class="st">ресёрч</span>';
+const link=(u,t)=>u?`<a href="${u}" target="_blank" rel="noopener">${t}</a>`:t;
+function hbar(canvas, labels, datasets, opts={}){
+  const ink2=css('--ink-2'), grid=css('--grid');
+  return new Chart(canvas,{type:'bar',data:{labels,datasets},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:false,
+    plugins:{legend:{display:datasets.length>1,position:'top',align:'start',labels:{color:ink2,boxWidth:12,boxHeight:12}},tooltip:{backgroundColor:'#111',padding:10}},
+    scales:{x:{stacked:true,grid:{color:grid},border:{display:false},ticks:{color:ink2,precision:0,maxTicksLimit:6},max:opts.max},
+            y:{stacked:true,grid:{display:false},ticks:{color:ink2}}}}});
+}
+const sumFree=[], sumTop=[];
+D.ideas.forEach(I=>{
+  const best=[...I.rows].sort((a,b)=>b.score-a.score)[0];
+  sumFree.push({n:I.n,t:I.title,v:I.gap.filter(g=>g.full===0).length});
+  sumTop.push({n:I.n,t:I.title,who:best.name,v:best.score});
+  const free=I.gap.filter(g=>g.full===0).map(g=>g.col);
+  const sec=document.createElement('div'); sec.className='section';
+  sec.innerHTML=`<h2>${I.n}. ${I.title}</h2>
+   <p class="lead" style="margin-bottom:18px">Проверено конкурентов: ${I.rows.length}. Свободных решений: ${free.length} из ${I.cols.length}${free.length?': '+free.map(x=>x.toLowerCase()).join(', '):''}.</p>
+   <div class="card"><p class="chart-title">Матрица: наши решения против конкурентов</p><p class="chart-sub">Один конкурент на строку, сортировка по тому, сколько наших решений он закрывает</p>
+   <div class="tablewrap"><table class="mx"><thead><tr><th>Конкурент</th>${I.cols.map(c=>`<th class="c">${c}</th>`).join('')}<th class="c">Закрывает из 7</th></tr></thead><tbody>
+   ${[...I.rows].sort((a,b)=>b.score-a.score).map(r=>`<tr><td class="n">${link(r.url,r.name)}</td>${r.m.map(v=>`<td class="c ${cls(v)}"><span>${v}</span></td>`).join('')}<td class="c v-none"><span>${String(r.score).replace('.',',')}</span></td></tr>`).join('')}
+   <tr class="gaprow"><td class="n">Есть полностью у</td>${I.gap.map(g=>g.full===0?`<td class="c gapcell"><span>свободно</span></td>`:`<td class="c v-none"><span>${g.full}</span></td>`).join('')}<td></td></tr>
+   </tbody></table></div></div>
+   <div class="grid2">
+     <div class="card"><p class="chart-title">Насколько рынок закрыл каждое решение</p><p class="chart-sub">Число конкурентов, у которых решение есть полностью или частично</p><div class="box"><canvas></canvas></div></div>
+     <div class="card"><p class="chart-title">Сила конкурентов</p><p class="chart-sub">Сколько из 7 наших решений уже закрывает каждый: ● = 1, ◐ = 0,5</p><div class="box"><canvas></canvas></div></div>
+   </div>
+   <h3 style="margin:8px 0 12px">Сильные решения конкурентов</h3>
+   <div class="cards">${I.strong.map(s=>`<div class="sol"><h3>${s.who}</h3><p>${s.what}</p><div class="proof">${s.proof}</div><div class="src">${verTag(s.ver)} ${s.url?link(s.url,'источник'):''}</div></div>`).join('')}</div>
+   <div class="card" style="margin-top:20px"><h3>Прогноз на 12 месяцев: как поведут себя конкуренты</h3>
+     <p class="chart-sub">Экспертная оценка по найденным фактам, не измерение. Вероятность — насколько ход конкурента реален в ближайший год. Сигнал — что отслеживать, чтобы заметить ход вовремя.</p>
+     <div class="tablewrap"><table class="fc"><thead><tr><th>Кто</th><th>Что может сделать</th><th>Вероятность</th><th>Почему так думаю</th><th>Что отслеживать</th><th>Наш ответ</th></tr></thead>
+     <tbody>${I.forecast.map(f=>`<tr><td><b>${f.who}</b></td><td>${f.move}</td><td><span class="st ${f.p==='высокая'?'p-hi':f.p==='средняя'?'p-mid':'p-lo'}">${f.p}</span></td><td>${f.why}</td><td>${f.signal}</td><td>${f.answer}</td></tr>`).join('')}</tbody></table></div></div>
+   <div class="card" style="margin-top:20px"><h3 style="margin-bottom:12px">Все конкуренты</h3><div class="tablewrap"><table>
+     <thead><tr><th>Конкурент</th><th>Тип</th><th>Где работает</th><th>Языки</th><th>Как зарабатывает</th><th>Признаки силы</th><th>Данные</th></tr></thead>
+     <tbody>${I.rows.map(r=>`<tr><td><b>${link(r.url,r.name)}</b></td><td>${r.type}</td><td>${r.geo}</td><td>${r.lang}</td><td>${r.model}</td><td>${r.power}</td><td>${verTag(r.ver)}</td></tr>`).join('')}</tbody></table></div></div>
+   <div class="concl"><h3>Выводы по идее ${I.n}</h3><ol>${I.conclusion.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
+  document.getElementById('ideas').appendChild(sec);
+  const cv=sec.querySelectorAll('canvas');
+  hbar(cv[0], I.cols, [{label:'полностью',data:I.gap.map(g=>g.full),backgroundColor:css('--full'),borderRadius:4},{label:'частично',data:I.gap.map(g=>g.part),backgroundColor:css('--part'),borderRadius:4}]);
+  const rs=[...I.rows].sort((a,b)=>b.score-a.score);
+  hbar(cv[1], rs.map(r=>r.name), [{label:'закрывает',data:rs.map(r=>r.score),backgroundColor:rs.map((r,i)=>i===0?css('--s2'):css('--s1')),borderRadius:4}], {max:7});
+});
+hbar(document.getElementById('sumFree'), sumFree.map(s=>({1:'1. Мастера',2:'2. Карта ЖК',3:'3. Легализация'})[s.n]), [{label:'свободных решений',data:sumFree.map(s=>s.v),backgroundColor:css('--good'),borderRadius:4}], {max:7});
+hbar(document.getElementById('sumTop'), sumTop.map(s=>`${s.n}. ${s.who}`), [{label:'закрывает',data:sumTop.map(s=>s.v),backgroundColor:css('--s2'),borderRadius:4}], {max:7});
+</script>
+</body>
+</html>
